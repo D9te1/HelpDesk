@@ -1,4 +1,4 @@
-﻿namespace HelpDesk.Domain.Enums;
+﻿namespace HelpDesk.Domain.TicketState;
 public enum TicketStatus
 {
     New = 1,
