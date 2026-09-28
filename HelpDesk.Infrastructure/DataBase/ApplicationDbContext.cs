@@ -40,9 +40,6 @@ namespace HelpDesk.Infrastructure.DataBase
             ticketEntity.Property(x => x.CategoryId)
                 .HasColumnName("categoryId")
                 .IsRequired();
-            ticketEntity.Property(x => x.Category)
-                .HasColumnName("category")
-                .IsRequired();
             ticketEntity.Property(x => x.CreatedAtUtc)
                 .HasColumnName("createdAtUtc")
                 .IsRequired();
@@ -51,9 +48,6 @@ namespace HelpDesk.Infrastructure.DataBase
                 .IsRequired();
             ticketEntity.Property(x => x.ClosedAtUtc)
                 .HasColumnName("closedAtUtc")
-                .IsRequired();
-            ticketEntity.Property(x => x.Comments)
-                .HasColumnName("comments")
                 .IsRequired();
             ticketEntity
                 .HasOne(ticket => ticket.Category)
@@ -71,38 +65,32 @@ namespace HelpDesk.Infrastructure.DataBase
             ticketCategoriesEntity.HasKey(x => x.Id);
             ticketCategoriesEntity.Property(x=>x.Id)
                 .HasColumnName("id")
-                .UseIdentityColumn();
+                .IsRequired();
             ticketCategoriesEntity.Property(x => x.Name)
                 .HasColumnName("name")
-                .UseIdentityColumn();
+                .IsRequired();
             ticketCategoriesEntity.Property(x => x.IsActive)
                 .HasColumnName("isActive")
-                .UseIdentityColumn();
-            ticketCategoriesEntity.Property(x => x.Tickets)
-                .HasColumnName("tickets")
-                .UseIdentityColumn();
+                .IsRequired();
 
             var ticketCommentsEntity = modelBuilder.Entity<TicketComment>()
                 .ToTable("ticketcomments");
             ticketCommentsEntity.HasKey(x => x.Id);
             ticketCommentsEntity.Property(x => x.Id)
                 .HasColumnName("id")
-                .UseIdentityColumn();
+                .IsRequired();
             ticketCommentsEntity.Property(x=>x.TicketId)
                 .HasColumnName("ticketId")
-                .UseIdentityColumn();
-            ticketCommentsEntity.Property(x => x.Ticket)
-                .HasColumnName("ticket")
-                .UseIdentityColumn();
+                .IsRequired();
             ticketCommentsEntity.Property(x => x.AuthorId)
                 .HasColumnName("authorId")
-                .UseIdentityColumn();
+                .IsRequired();
             ticketCommentsEntity.Property(x => x.Text)
                 .HasColumnName("text")
-                .UseIdentityColumn();
+                .IsRequired();
             ticketCommentsEntity.Property(x => x.CreatedAtUtc)
                 .HasColumnName("createdAtUtc")
-                .UseIdentityColumn();
+                .IsRequired();
         }
     }
 }
